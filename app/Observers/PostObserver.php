@@ -21,11 +21,13 @@ class PostObserver
 
 
         $data = array(
-            'name' => 'xxx',
+            'name' => 'Oluyosola',
             // 'description' => $post->description
        );
+    //    $emailBody= $post->description;
+    //    $body = htmlspecialchars_decode($post->description);
 
-        Mail::send('email.sub', $data,function ($message) use($post) {
+        Mail::send('email.sub', ['msg' => $post->description], function ($message) use($post) {
 
 
             $subscribers = Subscription::where('website_id', $post->website_id)->get();
@@ -35,6 +37,8 @@ class PostObserver
             $message->from('oluyosolaafolabi@gmail.com');
 
             $message->to($subscriber->email)->subject($post->title);
+
+            $message->setBody($post->description);
 
             }
                
