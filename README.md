@@ -20,7 +20,7 @@
 
 - mail can be sent to all subscribers using the command "php artisan emails:send"
 
-#Things I am unable to achieve
+#What I am unable to achieve
 - Use of Queues to schedule sending of mail in background
 
 #Feedback
