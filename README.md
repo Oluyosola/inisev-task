@@ -1,4 +1,4 @@
-- This platform platform that allows a user to subscribe to a website and read posts related to the website susbcribed to.
+- This platform allows a user to subscribe to a website and read posts related to the website susbcribed to.
 - Kindly run php artisan migrate to set up the db using php artisan migrate
 - configure smtp configuration to allow email sending in .env file
 - Seed the website table using php artisan db:seed --class=websiteSeeder
