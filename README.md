@@ -1,5 +1,6 @@
 - This platform allows a user to subscribe to a website and read posts related to the website susbcribed to.
 - include a .env file in the project diectory and set up db details
+- Run composer install to have the vendor folder that includes dependencies
 - Kindly run php artisan migrate to set up the db.
 - configure smtp configuration to allow email sending in .env file
 - Seed the website table using php artisan db:seed --class=websiteSeeder
