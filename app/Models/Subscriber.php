@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subcription extends Model
+class Subscriber extends Model
 {
     use HasFactory;
+
+    public function subscription()
+    {
+        return $this->hasOne(Phone::class);
+    }
 }

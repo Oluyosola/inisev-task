@@ -16,29 +16,11 @@ class WebsiteSeeder extends Seeder
      */
     public function run()
     {
+        for ($i=0; $i < 6; $i++) { 
             DB::table('websites')->insert([
-                ['name' => Str::random(6),
-                'subscriber_id' => 2
-            ],
-               [ 'name' => Str::random(6),
-                'subscriber_id' => 1
-        ],
-        [
                 'name' => Str::random(6),
-                'subscriber_id' => 4
-            ],
-            [
-                'name' => Str::random(6),
-                'subcriber_id' => 3
-	        ],
-            [
-            'name' => Str::random(6),
-                'subscriber_id' => 6
-	        ],
-[                'name' => Str::random(6),
-                'subscriber_id' => 5
-	        ]
-        ]);
-    }
+	        ]);
 
+    }
+}
 }

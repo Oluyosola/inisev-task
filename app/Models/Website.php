@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Website extends Model
 {
     use HasFactory;
+    
+
+    protected  $fillable =[
+        'subscriber_id'
+    ];
+
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
