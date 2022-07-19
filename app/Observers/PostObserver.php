@@ -20,14 +20,8 @@ class PostObserver
     {
 
 
-        $data = array(
-            'name' => 'Inisev',
-            // 'description' => $post->description
-       );
-    //    $emailBody= $post->description;
-    //    $body = htmlspecialchars_decode($post->description);
-
-        Mail::send('email.post', ['msg' => $post->description], function ($message) use($post) {
+       
+        Mail::send('email.post', ['msg' =>$post->description, 'title'=> $post->title], function ($message) use($post) {
 
 
             $subscribers = Subscription::where('website_id', $post->website_id)->get();
@@ -36,9 +30,8 @@ class PostObserver
 
             $message->from('oluyosolaafolabi@gmail.com');
 
-            $message->to($subscriber->email)->subject($post->title);
+            $message->to($subscriber->email)->subject("new post from". $post->website->name);
 
-            // $message->setBody($post->description);
 
             }
                
