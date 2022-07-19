@@ -31,6 +31,7 @@ class ApiController extends Controller
             
             ]);    
         }
+        
         $website= Website::where('name', $request->website)->exists();
 
         
@@ -72,7 +73,20 @@ class ApiController extends Controller
 
     public function createPost(Request $request){
 
+        $validator = Validator::make($request->all(), [
 
+            'title' => 'required',
+            'website' => 'required',
+            'description' => 'required'
+
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                'Failed' => ' Title, website and description are required',
+            
+            ]);    
+        }
 
         $post= Post::where('title', $request->title)->exists();
         if($post)

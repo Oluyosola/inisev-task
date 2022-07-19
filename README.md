@@ -16,7 +16,7 @@
 #create Post
 - api for creating a post is {{base_url}}/api/create-post
     method: POST
-    the parameters required to create a post are (title, description, website, create_by)
+    the parameters required to create a post are (title, description, website, created_by)
 - A user can only make a post with the same post title once to avoid duplicate posts.
 - A user can make a post under a wesite that exists
 
