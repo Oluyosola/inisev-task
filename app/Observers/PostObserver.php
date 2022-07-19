@@ -28,9 +28,9 @@ class PostObserver
 
             foreach ($subscribers as $subscriber) {
 
-            $message->from('oluyosolaafolabi@gmail.com');
+                $message->from('oluyosolaafolabi@gmail.com');
 
-            $message->to($subscriber->email)->subject("new post from". $post->website->name);
+                $message->to($subscriber->email)->subject("new post from". $post->website->name);
 
 
             }

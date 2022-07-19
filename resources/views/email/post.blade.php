@@ -12,7 +12,7 @@
     <h3>{{$msg}}</h3>
     <footer>
         <small>Thanks for subscribing</small>
+        <p><span>&#169; Inisev 2022</span></p>
     </footer>
-    <p><span>&#169; Inisev 2022</span></p>
 </body>
 </html>

@@ -18,7 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 Route::post('/subscribe', [App\Http\Controllers\ApiController::class, 'subscribe']);
 Route::post('/create-post', [App\Http\Controllers\ApiController::class, 'createPost']);
 
