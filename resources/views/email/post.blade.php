@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Document</title>   
+</head>
+<body>
     <h1>{{$title}}</h1>
 
     <h3>{{$msg}}</h3>
@@ -12,7 +14,5 @@
         <small>Thanks for subscribing</small>
     </footer>
     <p><span>&#169; Inisev 2022</span></p>
-</head>
-<body>
 </body>
 </html>
