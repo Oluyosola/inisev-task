@@ -21,7 +21,7 @@ class PostObserver
 
 
         $data = array(
-            'name' => 'Oluyosola',
+            'name' => 'Inisev',
             // 'description' => $post->description
        );
     //    $emailBody= $post->description;

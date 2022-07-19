@@ -51,7 +51,7 @@ class SendEmails extends Command
     public function handle(Request $request)
     {
         $data = array(
-            'name' => "xxx"
+            'name' => "Inisev"
        );
 
 
