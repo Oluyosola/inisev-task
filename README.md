@@ -21,7 +21,7 @@
 - mail can be sent to all subscribers using the command "php artisan emails:send"
 
 #What I am unable to achieve
-- Use of Queues to schedule sending of mail in background
+- Use of Queues to schedule sending of mail in background how ever I was able to use schedule.
 
 #Feedback
 - Though a considerable amount of time was given, however I can Improve on this if I have a little more time to.
