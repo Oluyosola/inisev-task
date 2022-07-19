@@ -27,7 +27,7 @@ class PostObserver
     //    $emailBody= $post->description;
     //    $body = htmlspecialchars_decode($post->description);
 
-        Mail::send('email.sub', ['msg' => $post->description], function ($message) use($post) {
+        Mail::send('email.post', ['msg' => $post->description], function ($message) use($post) {
 
 
             $subscribers = Subscription::where('website_id', $post->website_id)->get();
@@ -38,7 +38,7 @@ class PostObserver
 
             $message->to($subscriber->email)->subject($post->title);
 
-            $message->setBody($post->description);
+            // $message->setBody($post->description);
 
             }
                

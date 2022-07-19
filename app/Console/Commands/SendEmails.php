@@ -55,14 +55,14 @@ class SendEmails extends Command
        );
 
 
-        Mail::send('email.sub', $data, function ($message) {
+        Mail::send('email.allsubscribers', $data, function ($message) {
             $subscribers = Subscription::all();
 
             foreach ($subscribers as $subscriber) {
 
             $message->from('oluyosolaafolabi@gmail.com');
 
-            $message->to($subscriber->email)->subject('Hi');
+            $message->to($subscriber->email)->subject('Welcome');
             }
 
         });
