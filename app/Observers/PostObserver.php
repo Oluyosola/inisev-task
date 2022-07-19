@@ -21,51 +21,28 @@ class PostObserver
     {
 
         $data = array(
-            'name' => "xxx"
+            'name' => $post->title,
+            'description' => $post->description
        );
 
 
-        Mail::send('email.sub', $data, function ($message) {
+        Mail::send('email.sub', $data, function ($message) use($post) {
 
             
 
-            $subscribers = Subscription::all();
+            $subscribers = Subscription::where('website_id', $post->website_id)->get();
 
             foreach ($subscribers as $subscriber) {
 
             $message->from('oluyosolaafolabi@gmail.com');
 
-            $message->to($subscriber->email)->subject('Hi');
+            $message->to($subscriber->email)->subject($post->title);
             }
                
         });
         
     
     }    
-        // $post = Post::all();
-        // $subscription = Subscription::all();
-
-        // if($post->website_id == $subscription->website->id){
-
-        // $subscriber_id = $subscription->subscriber->id;
-      
-        // $subscribers = Subscriber::where('id', $subscriber_id)->get();
-        
-        // Mail::send('email.sub', function ($message) {
-
-        //     foreach ($subscribers as $subscriber) {
-
-        //     $message->from('oluyosolaafolabi@gmail.com');
-
-        //     $message->to($subscriber->email)->subject('Hi');
-        //     }
-
-        // });
-        // $this->info('Emails sent successfully!');
-    
-    
-
-
 
     /**
      * Handle the Post "updated" event.

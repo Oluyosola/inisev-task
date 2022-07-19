@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Hello! Welcome to Inisev</h1>
+    <h2>{{$post->description}}</h2>
 </body>
 </html>

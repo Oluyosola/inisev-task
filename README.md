@@ -19,7 +19,6 @@
 - mail can be sent to all subscribers using the command "php artisan emails:send"
 
 #Things I am unable to achieve
-- Filter post sent to mails based on subscription(however it sends to all subscribers as soon as a post is made using Laravel Observer)
 - Use of Queues to schedule sending of mail in background
 
 #Feedback
