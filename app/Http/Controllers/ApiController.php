@@ -17,20 +17,20 @@ class ApiController extends Controller
     
 
     public function subscribe(Request $request, Website $website){
-        // $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
 
-        //     'name' => 'required',
-        //     'website' => 'required',
-        //     'email' => 'required|unique:subscriptions'
+            'name' => 'required',
+            'website' => 'required',
+            'email' => 'required'
 
-        // ]);
+        ]);
 
-        // if($validator->fails()){
-        //     return response()->json([
-        //         'Failed' => ' Kindly input your name and the website you wish to subscribe to',
+        if($validator->fails()){
+            return response()->json([
+                'Failed' => ' Kindly input your name and the website you wish to subscribe to',
             
-        //     ]);    
-        // }
+            ]);    
+        }
         $website= Website::where('name', $request->website)->exists();
 
         
@@ -101,6 +101,7 @@ class ApiController extends Controller
             $post->created_by = $request->created_by;
             $post->website_id = $website_id;
             $post->save();
+            
 
             return response()->json([
                 'Sucess' => 'New Post Made and post sent to all subscribers',

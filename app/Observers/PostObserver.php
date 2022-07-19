@@ -5,12 +5,11 @@ namespace App\Observers;
 use App\Models\Post;
 use App\Models\Website;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Request;
-
 use App\Models\Subscription;
 
 class PostObserver
 {
+
     /**
      * Handle the Post "created" event.
      *
@@ -20,15 +19,14 @@ class PostObserver
     public function created(Post $post)
     {
 
+
         $data = array(
-            'name' => $post->title,
-            'description' => $post->description
+            'name' => 'xxx',
+            // 'description' => $post->description
        );
 
+        Mail::send('email.sub', $data,function ($message) use($post) {
 
-        Mail::send('email.sub', $data, function ($message) use($post) {
-
-            
 
             $subscribers = Subscription::where('website_id', $post->website_id)->get();
 
@@ -37,9 +35,12 @@ class PostObserver
             $message->from('oluyosolaafolabi@gmail.com');
 
             $message->to($subscriber->email)->subject($post->title);
+
             }
                
         });
+
+
         
     
     }    
