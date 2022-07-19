@@ -17,43 +17,35 @@ class ApiController extends Controller
     
 
     public function subscribe(Request $request, Website $website){
-        $validator = Validator::make($request->all(), [
+        // $validator = Validator::make($request->all(), [
 
-            'subscriber' => 'required',
-            'website' => 'required',
+        //     'name' => 'required',
+        //     'website' => 'required',
+        //     'email' => 'required|unique:subscriptions'
 
-        ]);
+        // ]);
 
-        if($validator->fails()){
-            return response()->json([
-                'Failed' => ' Kindly input your name and the website you wish to subscribe to',
+        // if($validator->fails()){
+        //     return response()->json([
+        //         'Failed' => ' Kindly input your name and the website you wish to subscribe to',
             
-            ]);    
-        }
-        $subscriber= Subscriber::where('name', $request->subscriber)->exists();
+        //     ]);    
+        // }
         $website= Website::where('name', $request->website)->exists();
 
-        if(!$subscriber)
-        {
-            return response()->json([
-                'Failed' => ' Subscriber does not Exist',
-            
-            ]);
-        }elseif(!$website){
+        
+        if(!$website){
             return response()->json([
                 'Failed' => ' Website does not Exist',
         
         ]);
 
         }
-
-
-        $sub_id = Subscriber::where('name', $request->subscriber)->first()->id;
+        $sub = Subscription::where('email', $request->email)->get();
         $website_id = Website::where('name', $request->website)->first()->id;
 
-        $subscriber= Subscription::where('subscriber_id', $sub_id)->exists();
         $website= Subscription::where('website_id', $website_id)->exists();
-        if($subscriber && $website){
+        if($website && $sub){
             return response()->json([
                 'Failed' => ' You are subscribed to this website',
             
@@ -62,15 +54,17 @@ class ApiController extends Controller
 
 
         $subscription = new Subscription;
-        $subscription->subscriber_id = $sub_id;
         $subscription->website_id = $website_id;
+        $subscription->name = $request->name;
+        $subscription->email = $request->email;
+
+
         $subscription->save();
 
 
         return response()->json([
             'Sucess' => 'Successfully subscribed',
             'You are Subscribed to'=> Website::where('id',  $website_id)->get(),
-            'You details'=> Subscriber::where('id', $sub_id)->get()
         ]);
     }
 
@@ -104,15 +98,15 @@ class ApiController extends Controller
             $post = new Post;
             $post->title = $request->title;
             $post->description = $request->description;
-            $post->content = $request->content;
             $post->created_by = $request->created_by;
             $post->website_id = $website_id;
             $post->save();
 
             return response()->json([
-                'Sucess' => 'New Post Made',
+                'Sucess' => 'New Post Made and post sent to all subscribers',
                 'details' => $post,
                 'website deatils'=>Website::find($post->website_id)
+                
 
             ]);
     }

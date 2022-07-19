@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
-use App\Models\Subscriber;
+use App\Models\Subscription;
 
 
 
@@ -56,8 +56,7 @@ class SendEmails extends Command
 
 
         Mail::send('email.sub', $data, function ($message) {
-            $subscribers = Subscriber::all();
-            
+            $subscribers = Subscription::all();
 
             foreach ($subscribers as $subscriber) {
 

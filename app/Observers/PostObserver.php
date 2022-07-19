@@ -4,8 +4,9 @@ namespace App\Observers;
 
 use App\Models\Post;
 use App\Models\Website;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 
-use App\Models\Subscriber;
 use App\Models\Subscription;
 
 class PostObserver
@@ -18,14 +19,37 @@ class PostObserver
      */
     public function created(Post $post)
     {
-        $post = Post::all();
-        $subscription = Subscription::all();
 
-        if($post->website_id == $subscription->website->id){
+        $data = array(
+            'name' => "xxx"
+       );
 
-        $subscriber_id = $subscription->subscriber->id;
+
+        Mail::send('email.sub', $data, function ($message) {
+
+            
+
+            $subscribers = Subscription::all();
+
+            foreach ($subscribers as $subscriber) {
+
+            $message->from('oluyosolaafolabi@gmail.com');
+
+            $message->to($subscriber->email)->subject('Hi');
+            }
+               
+        });
+        
+    
+    }    
+        // $post = Post::all();
+        // $subscription = Subscription::all();
+
+        // if($post->website_id == $subscription->website->id){
+
+        // $subscriber_id = $subscription->subscriber->id;
       
-        $subscribers = Subscriber::where('id', $subscriber_id)->get();
+        // $subscribers = Subscriber::where('id', $subscriber_id)->get();
         
         // Mail::send('email.sub', function ($message) {
 
@@ -39,8 +63,9 @@ class PostObserver
         // });
         // $this->info('Emails sent successfully!');
     
-    }
-}
+    
+
+
 
     /**
      * Handle the Post "updated" event.
